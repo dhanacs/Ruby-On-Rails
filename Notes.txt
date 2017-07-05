@@ -1,0 +1,75 @@
+Sample App
+=============
+
+[1] Create a new web app
+rails new Sample
+
+[2] Run the server
+rails server
+
+[3] Create a controller
+rails generate controller Pages
+
+[4] Include an action in the controller
+app/controllers/pages_controller.rb
+class PagesController < ApplicationController
+  def home
+  end
+end
+
+[5] Create a route
+config/routes.rb
+get 'welcome' => 'pages#home'
+
+[6] Create a new view corresponding to the view/action i.e. app/views/pages/home.html.erb
+<div class="main">
+  <div class="container">
+    <h1>Hello my name is Dhana!</h1>
+    <p>I make Rails apps.</p>
+  </div>
+</div>
+
+[7] Update the controller's CSS, app/assets/stylesheets/pages.css.scss
+
+[8] Run the server and view the changes hitting,
+http://localhost:3000/welcome
+
+Messenger App
+=============
+
+[1] rails new MessengerApp
+
+[2] Generate a model
+rails generate model Message
+
+[3] Open the migration file in db/migrate/ for the messages table
+Inside the change method, add this line,
+t.text :content
+This creates a text column called 'content'
+
+[4] Update seed.rb with sample data and run,
+rake db:migrate
+rake db:seed
+
+[5] Create a controller
+rails generate controller Messages
+
+[6] Include an action in the controller
+app/controllers/messages_controller.rb
+class MessagesController < ApplicationController
+  def index 
+    @messages = Message.all 
+  end
+end
+
+[7] Create a route
+config/routes.rb
+get '/messages' => 'messages#index'
+
+[8] Update the view app/views/messages/index.html.erb
+<% @messages.each do |message| %> 
+ <div class="message"> 
+   <p class="content"><%= message.content %></p> 
+   <p class="time"><%= message.created_at %></p> 
+ </div> 
+<% end %>

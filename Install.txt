@@ -1,0 +1,13 @@
+RubyGems is a package manager.
+The command line tool fetches these packages from the central repository and installs them.
+
+Rake is a software task management and build automation tool.
+It allows the user to specify tasks and describe dependencies as well as to group tasks in a namespace.
+e.g.
+rake db:migrate
+rake db:seed
+
+c:>gem install rails
+c:>gem install rake
+c:>gem install nodejs-rails
+c:>rails -v
